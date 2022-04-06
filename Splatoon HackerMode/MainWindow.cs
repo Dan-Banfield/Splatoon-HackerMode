@@ -39,12 +39,15 @@ namespace Splatoon_HackerMode
         #region Event Handlers
 
         private void tcpGeckoConnectButton_Click(object sender, System.EventArgs e) => ConnectToWiiU();
+        private void tcpGeckoDisconnectButton_Click(object sender, System.EventArgs e) => DisconnectFromWiiU();
+
+        private void swimInInkEverywhereButton_Click(object sender, System.EventArgs e) => SendCode(0x106D37A8, 0x3F100000);
 
         #endregion
 
         #region Methods
 
-        public async void CheckForUpdates()
+        private async void CheckForUpdates()
         {
             UpdateHandler.UpdateStatus updateStatus = UpdateHandler.UpdateStatus.CheckFailed;
             Root root = new Root();
@@ -72,7 +75,7 @@ namespace Splatoon_HackerMode
             if (!string.IsNullOrEmpty(root.notice)) Utilities.MessageBox.ShowInformationMessage("Notice: " + root.notice);
         }
 
-        public void ConnectToWiiU()
+        private void ConnectToWiiU()
         {
             if (string.IsNullOrEmpty(wiiUIpAddressTextBox.Text))
             {
@@ -96,6 +99,12 @@ namespace Splatoon_HackerMode
             }
         }
 
+        private void DisconnectFromWiiU()
+        {
+            try { tcpGecko.Disconnect(); }
+            catch { }
+        }
+
         private void connectedTimer_Tick(object sender, System.EventArgs e)
         {
             wiiUConnected = tcpGecko.status() == WiiStatus.Running;
@@ -103,13 +112,41 @@ namespace Splatoon_HackerMode
             switch (wiiUConnected)
             {
                 case true:
+                    EnableConnectedControls();
+
                     tcpGeckoConnectionStatusLabel.Text = "Connection Status: Connected to a Wii U.";
                     tcpGeckoConnectionStatusLabel.ForeColor = System.Drawing.Color.Green;
                     break;
                 case false:
+                    DisableConnectedControls();
+
                     tcpGeckoConnectionStatusLabel.Text = "Connection Status: Not connected to a Wii U.";
                     tcpGeckoConnectionStatusLabel.ForeColor = System.Drawing.Color.Red;
                     break;
+            }
+        }
+
+        private void EnableConnectedControls()
+        {
+            tcpGeckoDisconnectButton.Enabled = true;
+            hacksTabControl.Enabled = true;
+        }
+
+        private void DisableConnectedControls()
+        {
+            tcpGeckoDisconnectButton.Enabled = false;
+            hacksTabControl.Enabled = false;
+        }
+
+        private void SendCode(uint address, uint value)
+        {
+            try
+            {
+                tcpGecko.poke(address, value);
+            }
+            catch
+            {
+                Utilities.MessageBox.ShowErrorMessage("Failed to send code to the Wii U!");
             }
         }
 

@@ -85,6 +85,7 @@ namespace Splatoon_HackerMode
             this.tcpGeckoDisconnectButton.TabStop = false;
             this.tcpGeckoDisconnectButton.Text = "Disconnect";
             this.tcpGeckoDisconnectButton.UseVisualStyleBackColor = true;
+            this.tcpGeckoDisconnectButton.Click += new System.EventHandler(this.tcpGeckoDisconnectButton_Click);
             // 
             // tcpGeckoConnectButton
             // 
@@ -182,6 +183,7 @@ namespace Splatoon_HackerMode
             this.swimInInkEverywhereButton.TabIndex = 0;
             this.swimInInkEverywhereButton.Text = "Swim In Ink Everywhere";
             this.swimInInkEverywhereButton.UseVisualStyleBackColor = true;
+            this.swimInInkEverywhereButton.Click += new System.EventHandler(this.swimInInkEverywhereButton_Click);
             // 
             // connectedTimer
             // 
