@@ -46,11 +46,13 @@ namespace Splatoon_HackerMode
                     Utilities.MessageBox.ShowInformationMessage("You're running the latest version!");
                     break;
                 case UpdateHandler.UpdateStatus.UpdatesAvailable:
-                    DialogResult dialogResult = MessageBox.Show("The v" + root.latestversion.ToString("0:0") + " update is available!\n\nChangelog: " + root.changelog + "\n\nWould you like to download the update?", "Update available!", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                    DialogResult dialogResult = MessageBox.Show("The v" + root.latestversion.ToString("0:0") + " update is available!\n\nChangelog:\n" + root.changelog + "\n\nWould you like to download the update?", "Update available!", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
 
                     if (dialogResult == DialogResult.Yes) Process.Start(root.latestversiondownloadlink);
                     break;
             }
+
+            if (!string.IsNullOrEmpty(root.notice)) Utilities.MessageBox.ShowInformationMessage("Notice: " + root.notice);
         }
     }
 }
