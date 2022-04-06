@@ -145,9 +145,9 @@ namespace Splatoon_HackerMode
             this.versionLabel.AutoSize = true;
             this.versionLabel.Location = new System.Drawing.Point(12, 490);
             this.versionLabel.Name = "versionLabel";
-            this.versionLabel.Size = new System.Drawing.Size(78, 13);
+            this.versionLabel.Size = new System.Drawing.Size(69, 13);
             this.versionLabel.TabIndex = 4;
-            this.versionLabel.Text = "Version: v1.0.0";
+            this.versionLabel.Text = "Version: v1.0";
             // 
             // label2
             // 
