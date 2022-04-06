@@ -34,7 +34,7 @@ namespace Splatoon_HackerMode
             this.tcpGeckoConnectionStatusLabel = new System.Windows.Forms.Label();
             this.tcpGeckoDisconnectButton = new System.Windows.Forms.Button();
             this.tcpGeckoConnectButton = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.wiiUIpAddressTextBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.backgroundPictureBox = new System.Windows.Forms.PictureBox();
             this.hacksTabControl = new System.Windows.Forms.TabControl();
@@ -54,7 +54,7 @@ namespace Splatoon_HackerMode
             this.tcpGeckoGroupBox.Controls.Add(this.tcpGeckoConnectionStatusLabel);
             this.tcpGeckoGroupBox.Controls.Add(this.tcpGeckoDisconnectButton);
             this.tcpGeckoGroupBox.Controls.Add(this.tcpGeckoConnectButton);
-            this.tcpGeckoGroupBox.Controls.Add(this.textBox1);
+            this.tcpGeckoGroupBox.Controls.Add(this.wiiUIpAddressTextBox);
             this.tcpGeckoGroupBox.Controls.Add(this.label1);
             this.tcpGeckoGroupBox.Location = new System.Drawing.Point(12, 12);
             this.tcpGeckoGroupBox.Name = "tcpGeckoGroupBox";
@@ -93,14 +93,15 @@ namespace Splatoon_HackerMode
             this.tcpGeckoConnectButton.TabStop = false;
             this.tcpGeckoConnectButton.Text = "Connect";
             this.tcpGeckoConnectButton.UseVisualStyleBackColor = true;
+            this.tcpGeckoConnectButton.Click += new System.EventHandler(this.tcpGeckoConnectButton_Click);
             // 
-            // textBox1
+            // wiiUIpAddressTextBox
             // 
-            this.textBox1.Location = new System.Drawing.Point(127, 23);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(162, 20);
-            this.textBox1.TabIndex = 1;
-            this.textBox1.TabStop = false;
+            this.wiiUIpAddressTextBox.Location = new System.Drawing.Point(127, 23);
+            this.wiiUIpAddressTextBox.Name = "wiiUIpAddressTextBox";
+            this.wiiUIpAddressTextBox.Size = new System.Drawing.Size(162, 20);
+            this.wiiUIpAddressTextBox.TabIndex = 1;
+            this.wiiUIpAddressTextBox.TabStop = false;
             // 
             // label1
             // 
@@ -211,7 +212,7 @@ namespace Splatoon_HackerMode
 
         private System.Windows.Forms.GroupBox tcpGeckoGroupBox;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox wiiUIpAddressTextBox;
         private System.Windows.Forms.Button tcpGeckoConnectButton;
         private System.Windows.Forms.Button tcpGeckoDisconnectButton;
         private System.Windows.Forms.PictureBox backgroundPictureBox;

@@ -1,11 +1,18 @@
 ﻿using System.Diagnostics;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TCPGeckoSharp;
 
 namespace Splatoon_HackerMode
 {
     public partial class MainWindow : Form
     {
+        #region Properties
+
+        private TCPGecko tcpGecko;
+
+        #endregion
+
         #region Form Code
 
         // Enable double buffering for the entire form (including controls).
@@ -26,6 +33,14 @@ namespace Splatoon_HackerMode
             InitializeComponent();
             CheckForUpdates();
         }
+
+        #region Event Handlers
+
+        private void tcpGeckoConnectButton_Click(object sender, System.EventArgs e) => ConnectToWiiU();
+
+        #endregion
+
+        #region Methods
 
         public async void CheckForUpdates()
         {
@@ -54,5 +69,16 @@ namespace Splatoon_HackerMode
 
             if (!string.IsNullOrEmpty(root.notice)) Utilities.MessageBox.ShowInformationMessage("Notice: " + root.notice);
         }
+
+        public void ConnectToWiiU()
+        {
+            if (string.IsNullOrEmpty(wiiUIpAddressTextBox.Text))
+            {
+                Utilities.MessageBox.ShowErrorMessage("Please enter a valid IP address.");
+                return;
+            }
+        }
+
+        #endregion
     }
 }
