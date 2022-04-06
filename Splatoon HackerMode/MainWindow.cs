@@ -11,8 +11,6 @@ namespace Splatoon_HackerMode
 
         private TCPGecko tcpGecko;
 
-        private bool wiiUConnected = false;
-
         #endregion
 
         #region Form Code
@@ -92,50 +90,47 @@ namespace Splatoon_HackerMode
             catch (ETCPGeckoException)
             {
                 Utilities.MessageBox.ShowErrorMessage("Could not find TCPGecko running on the Wii U.");
+                return;
             }
             catch (System.Net.Sockets.SocketException)
             {
                 Utilities.MessageBox.ShowErrorMessage("Invalid Wii U IP address.");
+                return;
             }
+            catch
+            {
+                return;
+            }
+
+            EnableConnectedControls();
         }
 
         private void DisconnectFromWiiU()
         {
             try { tcpGecko.Disconnect(); }
-            catch { }
-        }
+            catch { return; }
 
-        private void connectedTimer_Tick(object sender, System.EventArgs e)
-        {
-            wiiUConnected = tcpGecko.status() == WiiStatus.Running;
-
-            switch (wiiUConnected)
-            {
-                case true:
-                    EnableConnectedControls();
-
-                    tcpGeckoConnectionStatusLabel.Text = "Connection Status: Connected to a Wii U.";
-                    tcpGeckoConnectionStatusLabel.ForeColor = System.Drawing.Color.Green;
-                    break;
-                case false:
-                    DisableConnectedControls();
-
-                    tcpGeckoConnectionStatusLabel.Text = "Connection Status: Not connected to a Wii U.";
-                    tcpGeckoConnectionStatusLabel.ForeColor = System.Drawing.Color.Red;
-                    break;
-            }
+            DisableConnectedControls();
         }
 
         private void EnableConnectedControls()
         {
             tcpGeckoDisconnectButton.Enabled = true;
+            tcpGeckoConnectButton.Enabled = false;
+            wiiUIpAddressTextBox.Enabled = false;
             hacksTabControl.Enabled = true;
+            tcpGeckoConnectionStatusLabel.ForeColor = System.Drawing.Color.Green;
+            tcpGeckoConnectionStatusLabel.Text = "Connection Status: Connected to a Wii U.";
         }
 
         private void DisableConnectedControls()
         {
             tcpGeckoDisconnectButton.Enabled = false;
+            tcpGeckoConnectButton.Enabled = true;
+            wiiUIpAddressTextBox.Enabled = true;
             hacksTabControl.Enabled = false;
+            tcpGeckoConnectionStatusLabel.ForeColor = System.Drawing.Color.Red;
+            tcpGeckoConnectionStatusLabel.Text = "Connection Status: Not connected to a Wii U.";
         }
 
         private void SendCode(uint address, uint value)
