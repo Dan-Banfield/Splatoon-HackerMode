@@ -43,6 +43,7 @@ namespace Splatoon_HackerMode
             this.bannableHacksTabPage = new System.Windows.Forms.TabPage();
             this.versionLabel = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.swimInInkEverywhereButton = new System.Windows.Forms.Button();
             this.tcpGeckoGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.backgroundPictureBox)).BeginInit();
             this.hacksTabControl.SuspendLayout();
@@ -136,6 +137,7 @@ namespace Splatoon_HackerMode
             // 
             // safeHacksTabPage
             // 
+            this.safeHacksTabPage.Controls.Add(this.swimInInkEverywhereButton);
             this.safeHacksTabPage.Controls.Add(this.brighterInkButton);
             this.safeHacksTabPage.Location = new System.Drawing.Point(4, 22);
             this.safeHacksTabPage.Name = "safeHacksTabPage";
@@ -183,6 +185,16 @@ namespace Splatoon_HackerMode
             this.label2.TabIndex = 5;
             this.label2.Text = "Caution! Some hacks may freeze your Wii U, or get you banned!";
             // 
+            // swimInInkEverywhereButton
+            // 
+            this.swimInInkEverywhereButton.Location = new System.Drawing.Point(21, 57);
+            this.swimInInkEverywhereButton.Name = "swimInInkEverywhereButton";
+            this.swimInInkEverywhereButton.Size = new System.Drawing.Size(143, 33);
+            this.swimInInkEverywhereButton.TabIndex = 1;
+            this.swimInInkEverywhereButton.Text = "Swim In Ink Everywhere";
+            this.swimInInkEverywhereButton.UseVisualStyleBackColor = true;
+            this.swimInInkEverywhereButton.Click += new System.EventHandler(this.swimInInkEverywhereButton_Click);
+            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -225,6 +237,7 @@ namespace Splatoon_HackerMode
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label tcpGeckoConnectionStatusLabel;
         private System.Windows.Forms.Button brighterInkButton;
+        private System.Windows.Forms.Button swimInInkEverywhereButton;
     }
 }
 

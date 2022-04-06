@@ -39,7 +39,15 @@ namespace Splatoon_HackerMode
         private void tcpGeckoConnectButton_Click(object sender, System.EventArgs e) => ConnectToWiiU();
         private void tcpGeckoDisconnectButton_Click(object sender, System.EventArgs e) => DisconnectFromWiiU();
 
-        private void brighterInkButton_Click(object sender, System.EventArgs e) => SendCode(0x106D37A8, 0x3F100000);
+        private void brighterInkButton_Click(object sender, System.EventArgs e) => SendCode(0x106D37A8, 0x3F100000, true);
+        private void swimInInkEverywhereButton_Click(object sender, System.EventArgs e) 
+        {
+            SendCode(0x30000000, 0x106E46E8, true);
+            SendCode(0x10000000, 0x4DF9FFFE);
+            SendCode(0x0012088C, 43000000);
+            SendCode(0xD0000000, 0xDEADCAFE);
+            SendCode(0xD0000000, 0xDEADCAFE);
+        }
 
         #endregion
 
@@ -133,11 +141,29 @@ namespace Splatoon_HackerMode
             tcpGeckoConnectionStatusLabel.Text = "Connection Status: Not connected to a Wii U.";
         }
 
-        private void SendCode(uint address, uint value)
+        private void SendCode(uint address, uint value, bool sendAntiBanCodes = false)
         {
             try
             {
                 tcpGecko.poke(address, value);
+
+                if (sendAntiBanCodes)
+                {
+                    SendCode(0x30000000, 0x106E46E8);
+                    SendCode(0x19000000, 0x29000000);
+                    SendCode(0x00120058, 0x00000000);
+                    SendCode(0x31000000, 0x00001184);
+                    SendCode(0x00120058, 0x00000000);
+                    SendCode(0x31000000, 0x00001184);
+                    SendCode(0x00120058, 0x00000000);
+                    SendCode(0x31000000, 0x00001184);
+                    SendCode(0x00120058, 0x00000000);
+                    SendCode(0x31000000, 0x00001184);
+                    SendCode(0x00120058, 0x00000000);
+                    SendCode(0x31000000, 0x00001184);
+                    SendCode(0x00120058, 0x00000000);
+                    SendCode(0xD0000000, 0xDEADCAFE);
+                }
             }
             catch
             {
