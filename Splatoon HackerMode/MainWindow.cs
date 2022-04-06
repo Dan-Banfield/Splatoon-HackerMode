@@ -39,7 +39,7 @@ namespace Splatoon_HackerMode
         private void tcpGeckoConnectButton_Click(object sender, System.EventArgs e) => ConnectToWiiU();
         private void tcpGeckoDisconnectButton_Click(object sender, System.EventArgs e) => DisconnectFromWiiU();
 
-        private void swimInInkEverywhereButton_Click(object sender, System.EventArgs e) => SendCode(0x106D37A8, 0x3F100000);
+        private void brighterInkButton_Click(object sender, System.EventArgs e) => SendCode(0x106D37A8, 0x3F100000);
 
         #endregion
 
