@@ -29,6 +29,7 @@ namespace Splatoon_HackerMode
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainWindow));
             this.tcpGeckoGroupBox = new System.Windows.Forms.GroupBox();
             this.tcpGeckoConnectionStatusLabel = new System.Windows.Forms.Label();
@@ -43,6 +44,7 @@ namespace Splatoon_HackerMode
             this.versionLabel = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.swimInInkEverywhereButton = new System.Windows.Forms.Button();
+            this.connectedTimer = new System.Windows.Forms.Timer(this.components);
             this.tcpGeckoGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.backgroundPictureBox)).BeginInit();
             this.hacksTabControl.SuspendLayout();
@@ -181,6 +183,11 @@ namespace Splatoon_HackerMode
             this.swimInInkEverywhereButton.Text = "Swim In Ink Everywhere";
             this.swimInInkEverywhereButton.UseVisualStyleBackColor = true;
             // 
+            // connectedTimer
+            // 
+            this.connectedTimer.Interval = 1000;
+            this.connectedTimer.Tick += new System.EventHandler(this.connectedTimer_Tick);
+            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -223,6 +230,7 @@ namespace Splatoon_HackerMode
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label tcpGeckoConnectionStatusLabel;
         private System.Windows.Forms.Button swimInInkEverywhereButton;
+        private System.Windows.Forms.Timer connectedTimer;
     }
 }
 

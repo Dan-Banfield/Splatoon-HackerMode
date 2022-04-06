@@ -11,6 +11,8 @@ namespace Splatoon_HackerMode
 
         private TCPGecko tcpGecko;
 
+        private bool wiiUConnected = false;
+
         #endregion
 
         #region Form Code
@@ -91,6 +93,23 @@ namespace Splatoon_HackerMode
             catch (System.Net.Sockets.SocketException)
             {
                 Utilities.MessageBox.ShowErrorMessage("Invalid Wii U IP address.");
+            }
+        }
+
+        private void connectedTimer_Tick(object sender, System.EventArgs e)
+        {
+            wiiUConnected = tcpGecko.status() == WiiStatus.Running;
+
+            switch (wiiUConnected)
+            {
+                case true:
+                    tcpGeckoConnectionStatusLabel.Text = "Connection Status: Connected to a Wii U.";
+                    tcpGeckoConnectionStatusLabel.ForeColor = System.Drawing.Color.Green;
+                    break;
+                case false:
+                    tcpGeckoConnectionStatusLabel.Text = "Connection Status: Not connected to a Wii U.";
+                    tcpGeckoConnectionStatusLabel.ForeColor = System.Drawing.Color.Red;
+                    break;
             }
         }
 
