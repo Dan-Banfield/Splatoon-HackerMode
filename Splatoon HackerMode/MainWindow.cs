@@ -77,6 +77,21 @@ namespace Splatoon_HackerMode
                 Utilities.MessageBox.ShowErrorMessage("Please enter a valid IP address.");
                 return;
             }
+
+            if (tcpGecko == null) tcpGecko = new TCPGecko(wiiUIpAddressTextBox.Text, 7331);
+
+            try
+            {
+                tcpGecko.Connect();
+            }
+            catch (ETCPGeckoException)
+            {
+                Utilities.MessageBox.ShowErrorMessage("Could not find TCPGecko running on the Wii U.");
+            }
+            catch (System.Net.Sockets.SocketException)
+            {
+                Utilities.MessageBox.ShowErrorMessage("Invalid Wii U IP address.");
+            }
         }
 
         #endregion

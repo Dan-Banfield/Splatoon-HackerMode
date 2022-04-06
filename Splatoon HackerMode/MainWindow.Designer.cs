@@ -42,7 +42,7 @@ namespace Splatoon_HackerMode
             this.bannableHacksTabPage = new System.Windows.Forms.TabPage();
             this.versionLabel = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.swimInInkButton = new System.Windows.Forms.Button();
+            this.swimInInkEverywhereButton = new System.Windows.Forms.Button();
             this.tcpGeckoGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.backgroundPictureBox)).BeginInit();
             this.hacksTabControl.SuspendLayout();
@@ -135,7 +135,7 @@ namespace Splatoon_HackerMode
             // 
             // safeHacksTabPage
             // 
-            this.safeHacksTabPage.Controls.Add(this.swimInInkButton);
+            this.safeHacksTabPage.Controls.Add(this.swimInInkEverywhereButton);
             this.safeHacksTabPage.Location = new System.Drawing.Point(4, 22);
             this.safeHacksTabPage.Name = "safeHacksTabPage";
             this.safeHacksTabPage.Padding = new System.Windows.Forms.Padding(3);
@@ -172,14 +172,14 @@ namespace Splatoon_HackerMode
             this.label2.TabIndex = 5;
             this.label2.Text = "Caution! Some hacks may freeze your Wii U, or get you banned!";
             // 
-            // swimInInkButton
+            // swimInInkEverywhereButton
             // 
-            this.swimInInkButton.Location = new System.Drawing.Point(21, 18);
-            this.swimInInkButton.Name = "swimInInkButton";
-            this.swimInInkButton.Size = new System.Drawing.Size(105, 33);
-            this.swimInInkButton.TabIndex = 0;
-            this.swimInInkButton.Text = "Swim In Ink";
-            this.swimInInkButton.UseVisualStyleBackColor = true;
+            this.swimInInkEverywhereButton.Location = new System.Drawing.Point(21, 18);
+            this.swimInInkEverywhereButton.Name = "swimInInkEverywhereButton";
+            this.swimInInkEverywhereButton.Size = new System.Drawing.Size(143, 33);
+            this.swimInInkEverywhereButton.TabIndex = 0;
+            this.swimInInkEverywhereButton.Text = "Swim In Ink Everywhere";
+            this.swimInInkEverywhereButton.UseVisualStyleBackColor = true;
             // 
             // MainWindow
             // 
@@ -222,7 +222,7 @@ namespace Splatoon_HackerMode
         private System.Windows.Forms.Label versionLabel;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label tcpGeckoConnectionStatusLabel;
-        private System.Windows.Forms.Button swimInInkButton;
+        private System.Windows.Forms.Button swimInInkEverywhereButton;
     }
 }
 
