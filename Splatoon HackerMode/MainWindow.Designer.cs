@@ -31,6 +31,7 @@ namespace Splatoon_HackerMode
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainWindow));
             this.tcpGeckoGroupBox = new System.Windows.Forms.GroupBox();
+            this.tcpGeckoConnectionStatusLabel = new System.Windows.Forms.Label();
             this.tcpGeckoDisconnectButton = new System.Windows.Forms.Button();
             this.tcpGeckoConnectButton = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
@@ -41,10 +42,11 @@ namespace Splatoon_HackerMode
             this.bannableHacksTabPage = new System.Windows.Forms.TabPage();
             this.versionLabel = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.tcpGeckoConnectionStatusLabel = new System.Windows.Forms.Label();
+            this.swimInInkButton = new System.Windows.Forms.Button();
             this.tcpGeckoGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.backgroundPictureBox)).BeginInit();
             this.hacksTabControl.SuspendLayout();
+            this.safeHacksTabPage.SuspendLayout();
             this.SuspendLayout();
             // 
             // tcpGeckoGroupBox
@@ -60,6 +62,16 @@ namespace Splatoon_HackerMode
             this.tcpGeckoGroupBox.TabIndex = 0;
             this.tcpGeckoGroupBox.TabStop = false;
             this.tcpGeckoGroupBox.Text = "TCPGecko";
+            // 
+            // tcpGeckoConnectionStatusLabel
+            // 
+            this.tcpGeckoConnectionStatusLabel.ForeColor = System.Drawing.Color.Red;
+            this.tcpGeckoConnectionStatusLabel.Location = new System.Drawing.Point(34, 51);
+            this.tcpGeckoConnectionStatusLabel.Name = "tcpGeckoConnectionStatusLabel";
+            this.tcpGeckoConnectionStatusLabel.Size = new System.Drawing.Size(425, 13);
+            this.tcpGeckoConnectionStatusLabel.TabIndex = 6;
+            this.tcpGeckoConnectionStatusLabel.Text = "Connection Status: Not connected to a Wii U.";
+            this.tcpGeckoConnectionStatusLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // tcpGeckoDisconnectButton
             // 
@@ -122,6 +134,7 @@ namespace Splatoon_HackerMode
             // 
             // safeHacksTabPage
             // 
+            this.safeHacksTabPage.Controls.Add(this.swimInInkButton);
             this.safeHacksTabPage.Location = new System.Drawing.Point(4, 22);
             this.safeHacksTabPage.Name = "safeHacksTabPage";
             this.safeHacksTabPage.Padding = new System.Windows.Forms.Padding(3);
@@ -158,15 +171,14 @@ namespace Splatoon_HackerMode
             this.label2.TabIndex = 5;
             this.label2.Text = "Caution! Some hacks may freeze your Wii U, or get you banned!";
             // 
-            // tcpGeckoConnectionStatusLabel
+            // swimInInkButton
             // 
-            this.tcpGeckoConnectionStatusLabel.ForeColor = System.Drawing.Color.Red;
-            this.tcpGeckoConnectionStatusLabel.Location = new System.Drawing.Point(34, 51);
-            this.tcpGeckoConnectionStatusLabel.Name = "tcpGeckoConnectionStatusLabel";
-            this.tcpGeckoConnectionStatusLabel.Size = new System.Drawing.Size(425, 13);
-            this.tcpGeckoConnectionStatusLabel.TabIndex = 6;
-            this.tcpGeckoConnectionStatusLabel.Text = "Connection Status: Not connected to a Wii U.";
-            this.tcpGeckoConnectionStatusLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.swimInInkButton.Location = new System.Drawing.Point(21, 18);
+            this.swimInInkButton.Name = "swimInInkButton";
+            this.swimInInkButton.Size = new System.Drawing.Size(105, 33);
+            this.swimInInkButton.TabIndex = 0;
+            this.swimInInkButton.Text = "Swim In Ink";
+            this.swimInInkButton.UseVisualStyleBackColor = true;
             // 
             // MainWindow
             // 
@@ -189,6 +201,7 @@ namespace Splatoon_HackerMode
             this.tcpGeckoGroupBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.backgroundPictureBox)).EndInit();
             this.hacksTabControl.ResumeLayout(false);
+            this.safeHacksTabPage.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -208,6 +221,7 @@ namespace Splatoon_HackerMode
         private System.Windows.Forms.Label versionLabel;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label tcpGeckoConnectionStatusLabel;
+        private System.Windows.Forms.Button swimInInkButton;
     }
 }
 
