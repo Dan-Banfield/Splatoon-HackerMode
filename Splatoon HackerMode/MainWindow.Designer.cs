@@ -44,6 +44,7 @@ namespace Splatoon_HackerMode
             this.bannableHacksTabPage = new System.Windows.Forms.TabPage();
             this.versionLabel = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.moonJumpButton = new System.Windows.Forms.Button();
             this.tcpGeckoGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.backgroundPictureBox)).BeginInit();
             this.hacksTabControl.SuspendLayout();
@@ -137,6 +138,7 @@ namespace Splatoon_HackerMode
             // 
             // safeHacksTabPage
             // 
+            this.safeHacksTabPage.Controls.Add(this.moonJumpButton);
             this.safeHacksTabPage.Controls.Add(this.swimInInkEverywhereButton);
             this.safeHacksTabPage.Controls.Add(this.brighterInkButton);
             this.safeHacksTabPage.Location = new System.Drawing.Point(4, 22);
@@ -182,9 +184,9 @@ namespace Splatoon_HackerMode
             this.versionLabel.AutoSize = true;
             this.versionLabel.Location = new System.Drawing.Point(12, 490);
             this.versionLabel.Name = "versionLabel";
-            this.versionLabel.Size = new System.Drawing.Size(69, 13);
+            this.versionLabel.Size = new System.Drawing.Size(45, 13);
             this.versionLabel.TabIndex = 4;
-            this.versionLabel.Text = "Version: v1.0";
+            this.versionLabel.Text = "Version:";
             // 
             // label2
             // 
@@ -194,6 +196,16 @@ namespace Splatoon_HackerMode
             this.label2.Size = new System.Drawing.Size(309, 13);
             this.label2.TabIndex = 5;
             this.label2.Text = "Caution! Some hacks may freeze your Wii U, or get you banned!";
+            // 
+            // moonJumpButton
+            // 
+            this.moonJumpButton.Location = new System.Drawing.Point(21, 96);
+            this.moonJumpButton.Name = "moonJumpButton";
+            this.moonJumpButton.Size = new System.Drawing.Size(143, 33);
+            this.moonJumpButton.TabIndex = 2;
+            this.moonJumpButton.Text = "Moon Jump";
+            this.moonJumpButton.UseVisualStyleBackColor = true;
+            this.moonJumpButton.Click += new System.EventHandler(this.moonJumpButton_Click);
             // 
             // MainWindow
             // 
@@ -238,6 +250,7 @@ namespace Splatoon_HackerMode
         private System.Windows.Forms.Label tcpGeckoConnectionStatusLabel;
         private System.Windows.Forms.Button brighterInkButton;
         private System.Windows.Forms.Button swimInInkEverywhereButton;
+        private System.Windows.Forms.Button moonJumpButton;
     }
 }
 

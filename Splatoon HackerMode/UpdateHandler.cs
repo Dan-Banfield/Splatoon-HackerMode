@@ -34,6 +34,7 @@ namespace Splatoon_HackerMode
                 root = JsonConvert.DeserializeObject<Root>(json);
 
                 if (root.latestversion > currentVersion) return UpdateStatus.UpdatesAvailable;
+                if (root.latestversion < currentVersion) return UpdateStatus.UpdatesAvailable;
                 if (root.latestversion == currentVersion) return UpdateStatus.NoUpdatesAvailable;
             }
             catch

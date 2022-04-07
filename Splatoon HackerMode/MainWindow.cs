@@ -39,13 +39,22 @@ namespace Splatoon_HackerMode
         private void tcpGeckoConnectButton_Click(object sender, System.EventArgs e) => ConnectToWiiU();
         private void tcpGeckoDisconnectButton_Click(object sender, System.EventArgs e) => DisconnectFromWiiU();
 
-        private void brighterInkButton_Click(object sender, System.EventArgs e) => SendCode(0x106D37A8, 0x3F100000, true);
+        private void brighterInkButton_Click(object sender, System.EventArgs e) => SendCode(0x106D37A8, 0x3F100000, true, true);
         private void swimInInkEverywhereButton_Click(object sender, System.EventArgs e) 
         {
-            SendCode(0x30000000, 0x106E46E8, true);
+            SendCode(0x30000000, 0x106E46E8, true, true);
             SendCode(0x10000000, 0x4DF9FFFE);
             SendCode(0x0012088C, 43000000);
             SendCode(0xD0000000, 0xDEADCAFE);
+            SendCode(0xD0000000, 0xDEADCAFE);
+        }
+        private void moonJumpButton_Click(object sender, System.EventArgs e)
+        {
+            SendCode(0x30000000, 0x106E46E8, true, true);
+            SendCode(0x1D000000, 0x29000000);
+            SendCode(0x31000000, 0x00000000);
+            SendCode(0x001205C8, 0x00000000);
+            SendCode(0x001205D8, 0x00000000);
             SendCode(0xD0000000, 0xDEADCAFE);
         }
 
@@ -55,6 +64,8 @@ namespace Splatoon_HackerMode
 
         private async void CheckForUpdates()
         {
+            UpdateVersionLabel();
+
             UpdateHandler.UpdateStatus updateStatus = UpdateHandler.UpdateStatus.CheckFailed;
             Root root = new Root();
 
@@ -79,6 +90,11 @@ namespace Splatoon_HackerMode
             }
 
             if (!string.IsNullOrEmpty(root.notice)) Utilities.MessageBox.ShowInformationMessage("Notice: " + root.notice);
+        }
+
+        private void UpdateVersionLabel()
+        {
+            versionLabel.Text += " v" + UpdateHandler.currentVersion.ToString("0.0");
         }
 
         private void ConnectToWiiU()
@@ -141,12 +157,10 @@ namespace Splatoon_HackerMode
             tcpGeckoConnectionStatusLabel.Text = "Connection Status: Not connected to a Wii U.";
         }
 
-        private void SendCode(uint address, uint value, bool sendAntiBanCodes = false)
+        private void SendCode(uint address, uint value, bool sendAntiBanCodes = false, bool showSuccessNotification = false)
         {
             try
             {
-                tcpGecko.poke(address, value);
-
                 if (sendAntiBanCodes)
                 {
                     SendCode(0x30000000, 0x106E46E8);
@@ -164,6 +178,10 @@ namespace Splatoon_HackerMode
                     SendCode(0x00120058, 0x00000000);
                     SendCode(0xD0000000, 0xDEADCAFE);
                 }
+
+                tcpGecko.poke(address, value);
+
+                if (showSuccessNotification) Utilities.MessageBox.ShowInformationMessage("Code sent successfully!");
             }
             catch
             {
