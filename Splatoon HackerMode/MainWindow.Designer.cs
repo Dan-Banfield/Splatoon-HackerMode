@@ -39,11 +39,11 @@ namespace Splatoon_HackerMode
             this.backgroundPictureBox = new System.Windows.Forms.PictureBox();
             this.hacksTabControl = new System.Windows.Forms.TabControl();
             this.safeHacksTabPage = new System.Windows.Forms.TabPage();
+            this.swimInInkEverywhereButton = new System.Windows.Forms.Button();
             this.brighterInkButton = new System.Windows.Forms.Button();
             this.bannableHacksTabPage = new System.Windows.Forms.TabPage();
             this.versionLabel = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.swimInInkEverywhereButton = new System.Windows.Forms.Button();
             this.tcpGeckoGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.backgroundPictureBox)).BeginInit();
             this.hacksTabControl.SuspendLayout();
@@ -147,6 +147,16 @@ namespace Splatoon_HackerMode
             this.safeHacksTabPage.Text = "Safe Hacks";
             this.safeHacksTabPage.UseVisualStyleBackColor = true;
             // 
+            // swimInInkEverywhereButton
+            // 
+            this.swimInInkEverywhereButton.Location = new System.Drawing.Point(21, 57);
+            this.swimInInkEverywhereButton.Name = "swimInInkEverywhereButton";
+            this.swimInInkEverywhereButton.Size = new System.Drawing.Size(143, 33);
+            this.swimInInkEverywhereButton.TabIndex = 1;
+            this.swimInInkEverywhereButton.Text = "Swim In Ink Everywhere";
+            this.swimInInkEverywhereButton.UseVisualStyleBackColor = true;
+            this.swimInInkEverywhereButton.Click += new System.EventHandler(this.swimInInkEverywhereButton_Click);
+            // 
             // brighterInkButton
             // 
             this.brighterInkButton.Location = new System.Drawing.Point(21, 18);
@@ -184,16 +194,6 @@ namespace Splatoon_HackerMode
             this.label2.Size = new System.Drawing.Size(309, 13);
             this.label2.TabIndex = 5;
             this.label2.Text = "Caution! Some hacks may freeze your Wii U, or get you banned!";
-            // 
-            // swimInInkEverywhereButton
-            // 
-            this.swimInInkEverywhereButton.Location = new System.Drawing.Point(21, 57);
-            this.swimInInkEverywhereButton.Name = "swimInInkEverywhereButton";
-            this.swimInInkEverywhereButton.Size = new System.Drawing.Size(143, 33);
-            this.swimInInkEverywhereButton.TabIndex = 1;
-            this.swimInInkEverywhereButton.Text = "Swim In Ink Everywhere";
-            this.swimInInkEverywhereButton.UseVisualStyleBackColor = true;
-            this.swimInInkEverywhereButton.Click += new System.EventHandler(this.swimInInkEverywhereButton_Click);
             // 
             // MainWindow
             // 
