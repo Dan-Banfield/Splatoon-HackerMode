@@ -37,11 +37,7 @@ namespace Splatoon_HackerMode
                 if (root.latestversion < currentVersion) return UpdateStatus.UpdatesAvailable;
                 if (root.latestversion == currentVersion) return UpdateStatus.NoUpdatesAvailable;
             }
-            catch
-            {
-                root = new Root();
-                return UpdateStatus.CheckFailed;
-            }
+            catch { }
 
             root = new Root();
             return UpdateStatus.CheckFailed;

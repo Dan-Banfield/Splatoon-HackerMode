@@ -31,10 +31,15 @@ namespace Splatoon_HackerMode
         public MainWindow()
         {
             InitializeComponent();
+
+            InitializeForm();
+
             CheckForUpdates();
         }
 
         #region Event Handlers
+
+        #region Buttons
 
         private void tcpGeckoConnectButton_Click(object sender, System.EventArgs e) => ConnectToWiiU();
         private void tcpGeckoDisconnectButton_Click(object sender, System.EventArgs e) => DisconnectFromWiiU();
@@ -60,12 +65,17 @@ namespace Splatoon_HackerMode
 
         #endregion
 
+        #endregion
+
         #region Methods
+
+        private void InitializeForm()
+        {
+            UpdateVersionLabel();
+        }
 
         private async void CheckForUpdates()
         {
-            UpdateVersionLabel();
-
             UpdateHandler.UpdateStatus updateStatus = UpdateHandler.UpdateStatus.CheckFailed;
             Root root = new Root();
 
@@ -74,6 +84,11 @@ namespace Splatoon_HackerMode
                 updateStatus = UpdateHandler.CheckForUpdates(out root);
             });
 
+            ShowUpdateStatus(updateStatus, root);
+        }
+
+        private void ShowUpdateStatus(UpdateHandler.UpdateStatus updateStatus, Root root)
+        {
             switch (updateStatus)
             {
                 case UpdateHandler.UpdateStatus.CheckFailed:
@@ -89,6 +104,11 @@ namespace Splatoon_HackerMode
                     break;
             }
 
+            ShowNotice(root);
+        }
+
+        private void ShowNotice(Root root)
+        {
             if (!string.IsNullOrEmpty(root.notice)) Utilities.MessageBox.ShowInformationMessage("Notice: " + root.notice);
         }
 
@@ -99,34 +119,42 @@ namespace Splatoon_HackerMode
 
         private void ConnectToWiiU()
         {
-            if (string.IsNullOrEmpty(wiiUIpAddressTextBox.Text))
-            {
-                Utilities.MessageBox.ShowErrorMessage("Please enter a valid IP address.");
-                return;
-            }
+            if (!ValidWiiUIP(wiiUIpAddressTextBox.Text)) { Utilities.MessageBox.ShowErrorMessage("Please enter an IP address first."); return; }
 
             if (tcpGecko == null) tcpGecko = new TCPGecko(wiiUIpAddressTextBox.Text, 7331);
 
+            if (AttemptWiiUConnection())
+            {
+                EnableConnectedControls();
+            }
+        }
+
+        private bool ValidWiiUIP(string ipAddress)
+        {
+            return (!string.IsNullOrEmpty(ipAddress));
+        }
+
+        private bool AttemptWiiUConnection()
+        {
             try
             {
                 tcpGecko.Connect();
+                return true;
             }
             catch (ETCPGeckoException)
             {
                 Utilities.MessageBox.ShowErrorMessage("Could not find TCPGecko running on the Wii U.");
-                return;
+                return false;
             }
             catch (System.Net.Sockets.SocketException)
             {
                 Utilities.MessageBox.ShowErrorMessage("Invalid Wii U IP address.");
-                return;
+                return false;
             }
             catch
             {
-                return;
+                return false;
             }
-
-            EnableConnectedControls();
         }
 
         private void DisconnectFromWiiU()
@@ -139,54 +167,67 @@ namespace Splatoon_HackerMode
 
         private void EnableConnectedControls()
         {
+            #region Big Code Stack
+
             tcpGeckoDisconnectButton.Enabled = true;
             tcpGeckoConnectButton.Enabled = false;
             wiiUIpAddressTextBox.Enabled = false;
             hacksTabControl.Enabled = true;
             tcpGeckoConnectionStatusLabel.ForeColor = System.Drawing.Color.Green;
             tcpGeckoConnectionStatusLabel.Text = "Connection Status: Connected to a Wii U.";
+
+            #endregion
         }
 
         private void DisableConnectedControls()
         {
+            #region Big Code Stack
+
             tcpGeckoDisconnectButton.Enabled = false;
             tcpGeckoConnectButton.Enabled = true;
             wiiUIpAddressTextBox.Enabled = true;
             hacksTabControl.Enabled = false;
             tcpGeckoConnectionStatusLabel.ForeColor = System.Drawing.Color.Red;
             tcpGeckoConnectionStatusLabel.Text = "Connection Status: Not connected to a Wii U.";
+
+            #endregion
         }
 
-        private void SendCode(uint address, uint value, bool sendAntiBanCodes = false, bool showSuccessNotification = false)
+        private void SendCode(uint address, uint value, bool sendAntiBanCodes = false, bool showNotifications = false)
         {
             try
             {
                 if (sendAntiBanCodes)
                 {
-                    SendCode(0x30000000, 0x106E46E8);
-                    SendCode(0x19000000, 0x29000000);
-                    SendCode(0x00120058, 0x00000000);
-                    SendCode(0x31000000, 0x00001184);
-                    SendCode(0x00120058, 0x00000000);
-                    SendCode(0x31000000, 0x00001184);
-                    SendCode(0x00120058, 0x00000000);
-                    SendCode(0x31000000, 0x00001184);
-                    SendCode(0x00120058, 0x00000000);
-                    SendCode(0x31000000, 0x00001184);
-                    SendCode(0x00120058, 0x00000000);
-                    SendCode(0x31000000, 0x00001184);
-                    SendCode(0x00120058, 0x00000000);
-                    SendCode(0xD0000000, 0xDEADCAFE);
+                    SendAntiBanCodes();
                 }
 
                 tcpGecko.poke(address, value);
 
-                if (showSuccessNotification) Utilities.MessageBox.ShowInformationMessage("Code sent successfully!");
+                if (showNotifications) Utilities.MessageBox.ShowInformationMessage("Code sent successfully!");
             }
             catch
             {
-                Utilities.MessageBox.ShowErrorMessage("Failed to send code to the Wii U!");
+                if (showNotifications) Utilities.MessageBox.ShowErrorMessage("Failed to send code to the Wii U!");
             }
+        }
+
+        private void SendAntiBanCodes()
+        {
+            SendCode(0x30000000, 0x106E46E8);
+            SendCode(0x19000000, 0x29000000);
+            SendCode(0x00120058, 0x00000000);
+            SendCode(0x31000000, 0x00001184);
+            SendCode(0x00120058, 0x00000000);
+            SendCode(0x31000000, 0x00001184);
+            SendCode(0x00120058, 0x00000000);
+            SendCode(0x31000000, 0x00001184);
+            SendCode(0x00120058, 0x00000000);
+            SendCode(0x31000000, 0x00001184);
+            SendCode(0x00120058, 0x00000000);
+            SendCode(0x31000000, 0x00001184);
+            SendCode(0x00120058, 0x00000000);
+            SendCode(0xD0000000, 0xDEADCAFE);
         }
 
         #endregion
