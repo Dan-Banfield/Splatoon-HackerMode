@@ -32,7 +32,6 @@ namespace Splatoon_HackerMode
         public MainWindow()
         {
             InitializeComponent();
-
             InitializeForm();
 
             CheckForUpdates();
@@ -96,7 +95,7 @@ namespace Splatoon_HackerMode
                     Utilities.MessageBox.ShowErrorMessage("Failed to check for updates! Please try again later.");
                     break;
                 case UpdateHandler.UpdateStatus.NoUpdatesAvailable:
-                    Utilities.MessageBox.ShowInformationMessage("You're running the latest version!");
+                    versionLabel.Text += " - Up To Date!";
                     break;
                 case UpdateHandler.UpdateStatus.UpdatesAvailable:
                     DialogResult dialogResult = MessageBox.Show("The v" + root.latestversion.ToString("0.0") + " update is available!\n\nChangelog:\n" + root.changelog + "\n\nWould you like to download the update?", "Update available!", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
