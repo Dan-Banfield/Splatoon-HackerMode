@@ -216,6 +216,9 @@ namespace Splatoon_HackerMode
 
         private void SendAntiBanCodes()
         {
+            return;
+
+            /*
             SendCode(0x30000000, 0x106E46E8);
             SendCode(0x19000000, 0x29000000);
             SendCode(0x00120058, 0x00000000);
@@ -230,6 +233,7 @@ namespace Splatoon_HackerMode
             SendCode(0x31000000, 0x00001184);
             SendCode(0x00120058, 0x00000000);
             SendCode(0xD0000000, 0xDEADCAFE);
+            */
         }
 
         #endregion
