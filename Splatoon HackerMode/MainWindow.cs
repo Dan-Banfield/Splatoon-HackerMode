@@ -1,4 +1,5 @@
 ﻿using System.Diagnostics;
+using System.Drawing;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using TCPGeckoSharp;
@@ -173,8 +174,9 @@ namespace Splatoon_HackerMode
             tcpGeckoConnectButton.Enabled = false;
             wiiUIpAddressTextBox.Enabled = false;
             hacksTabControl.Enabled = true;
-            tcpGeckoConnectionStatusLabel.ForeColor = System.Drawing.Color.Green;
+            tcpGeckoConnectionStatusLabel.ForeColor = Color.Green;
             tcpGeckoConnectionStatusLabel.Text = "Connection Status: Connected to a Wii U.";
+            wiiUIpAddressTextBox.BackColor = Color.Green;
 
             #endregion
         }
@@ -187,8 +189,9 @@ namespace Splatoon_HackerMode
             tcpGeckoConnectButton.Enabled = true;
             wiiUIpAddressTextBox.Enabled = true;
             hacksTabControl.Enabled = false;
-            tcpGeckoConnectionStatusLabel.ForeColor = System.Drawing.Color.Red;
+            tcpGeckoConnectionStatusLabel.ForeColor = Color.Red;
             tcpGeckoConnectionStatusLabel.Text = "Connection Status: Not connected to a Wii U.";
+            wiiUIpAddressTextBox.BackColor = Color.Red;
 
             #endregion
         }
