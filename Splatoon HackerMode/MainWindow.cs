@@ -62,6 +62,41 @@ namespace Splatoon_HackerMode
             SendCode(0x001205D8, 0x00000000);
             SendCode(0xD0000000, 0xDEADCAFE);
         }
+        private void safeNightPatcherButton_Click(object sender, System.EventArgs e)
+        {
+            SendCode(0x00020000, 0x12B4F8F4);
+            SendCode(0x00000001, 0x00000000);
+            SendCode(0x00020000, 0x12B4DFA4);
+            SendCode(0x00000001, 0x00000000);
+            SendCode(0x00020000, 0x12B4E22C);
+            SendCode(0x00000001, 0x00000000);
+            SendCode(0x00020000, 0x12B4E73C);
+            SendCode(0x00000001, 0x00000000);
+            SendCode(0x00020000, 0x12B4E4B4);
+            SendCode(0x00000001, 0x00000000);
+            SendCode(0x00020000, 0x12B4F3E4);
+            SendCode(0x00000001, 0x00000000);
+            SendCode(0x00020000, 0x12B4F15C);
+            SendCode(0x00000001, 0x00000000);
+            SendCode(0x00020000, 0x12B4EC4C);
+            SendCode(0x00000001, 0x00000000);
+            SendCode(0x00020000, 0x12B4FB7C);
+            SendCode(0x00000001, 0x00000000);
+            SendCode(0x00020000, 0x12B4EED4);
+            SendCode(0x00000001, 0x00000000);
+            SendCode(0x00020000, 0x12B4F66C);
+            SendCode(0x00000001, 0x00000000);
+            SendCode(0x00020000, 0x12B4FE04);
+            SendCode(0x00000001, 0x00000000);
+            SendCode(0x00020000, 0x12B4E9C4);
+            SendCode(0x00000001, 0x00000000);
+            SendCode(0x00020000, 0x12B4DD1C);
+            SendCode(0x00000001, 0x00000000);
+            SendCode(0x00020000, 0x12B4D80C);
+            SendCode(0x00000001, 0x00000000);
+            SendCode(0x00020000, 0x12B4DA94);
+            SendCode(0x00000001, 0x00000000);
+        }
 
         #endregion
 
@@ -216,24 +251,11 @@ namespace Splatoon_HackerMode
 
         private void SendAntiBanCodes()
         {
-            return;
-
-            /*
             SendCode(0x30000000, 0x106E46E8);
-            SendCode(0x19000000, 0x29000000);
-            SendCode(0x00120058, 0x00000000);
-            SendCode(0x31000000, 0x00001184);
-            SendCode(0x00120058, 0x00000000);
-            SendCode(0x31000000, 0x00001184);
-            SendCode(0x00120058, 0x00000000);
-            SendCode(0x31000000, 0x00001184);
-            SendCode(0x00120058, 0x00000000);
-            SendCode(0x31000000, 0x00001184);
-            SendCode(0x00120058, 0x00000000);
-            SendCode(0x31000000, 0x00001184);
-            SendCode(0x00120058, 0x00000000);
+            SendCode(0x1D000000, 0x29000000);
+            SendCode(0x31000000, 0x000007F8);
+            SendCode(0x00120000, 0x00000000);
             SendCode(0xD0000000, 0xDEADCAFE);
-            */
         }
 
         #endregion

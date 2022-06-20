@@ -45,6 +45,7 @@ namespace Splatoon_HackerMode
             this.bannableHacksTabPage = new System.Windows.Forms.TabPage();
             this.versionLabel = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.safeNightPatcherButton = new System.Windows.Forms.Button();
             this.tcpGeckoGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.backgroundPictureBox)).BeginInit();
             this.hacksTabControl.SuspendLayout();
@@ -140,6 +141,7 @@ namespace Splatoon_HackerMode
             // 
             // safeHacksTabPage
             // 
+            this.safeHacksTabPage.Controls.Add(this.safeNightPatcherButton);
             this.safeHacksTabPage.Controls.Add(this.moonJumpButton);
             this.safeHacksTabPage.Controls.Add(this.swimInInkEverywhereButton);
             this.safeHacksTabPage.Controls.Add(this.brighterInkButton);
@@ -209,6 +211,16 @@ namespace Splatoon_HackerMode
             this.label2.TabIndex = 5;
             this.label2.Text = "Caution! Some hacks may freeze your Wii U, or get you banned!";
             // 
+            // safeNightPatcherButton
+            // 
+            this.safeNightPatcherButton.Location = new System.Drawing.Point(21, 135);
+            this.safeNightPatcherButton.Name = "safeNightPatcherButton";
+            this.safeNightPatcherButton.Size = new System.Drawing.Size(143, 33);
+            this.safeNightPatcherButton.TabIndex = 3;
+            this.safeNightPatcherButton.Text = "Safe Night Patcher";
+            this.safeNightPatcherButton.UseVisualStyleBackColor = true;
+            this.safeNightPatcherButton.Click += new System.EventHandler(this.safeNightPatcherButton_Click);
+            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -253,6 +265,7 @@ namespace Splatoon_HackerMode
         private System.Windows.Forms.Button brighterInkButton;
         private System.Windows.Forms.Button swimInInkEverywhereButton;
         private System.Windows.Forms.Button moonJumpButton;
+        private System.Windows.Forms.Button safeNightPatcherButton;
     }
 }
 
